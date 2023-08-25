@@ -214,3 +214,57 @@ ALTER TABLE Members ADD CONSTRAINT member_game_fk FOREIGN KEY(GameId) REFERENCES
 ALTER TABLE Members ADD CONSTRAINT member_game_fk FOREIGN KEY(GameId) REFERENCES Games(GameId) ON DELETE SET NULL;
 -- ON DELETE SET NULL sets reference column to null on deleting
 ```
+
+```sql
+-- Double foreign key at the table level for between table
+CREATE TABLE Members_Games(
+    MemberId NUMBER,
+    GameId NUMBER,
+    CONSTRAINT members_games_member_fk FOREIGN KEY(MemberId) REFERENCES Members(MemberId),
+    CONSTRAINT members_games_game_fk FOREIGN KEY(GameId) REFERENCES Games(GameId),
+);
+```
+
+### Showing existing constraints
+Description of user_constraints table.
+```sql
+DESC user_constraints;
+```
+
+```sql
+-- Table name must be in uppercase
+SELECT constraint_name, constraint_type FROM user_constraints WHERE table_name='MEMBERS_GAMES';
+```
+
+```sql
+DESC user_cons_columns;
+```
+
+```sql
+-- Table name must be in uppercase
+SELECT constraint_name, column_name, owner FROM user_cons_columns WHERE table_name='MEMBERS_GAMES';
+```
+
+### <strong>DISABLE</strong> Constraint
+```sql
+ALTER TABLE Test3 DISABLE CONSTRAINT test3_gender_check;
+```
+
+### <strong>ENABLE</strong> Constraint
+```sql
+/*
+    Attention: 
+        if after disabling the check constraint
+        you put invalid data or somthing, that not
+        allow by constraint on enabling, this command
+        will be not enabled constraint because of
+        invalid characters thats try to validate with
+        check constraint.
+*/
+ALTER TABLE Test3 ENABLE CONSTRAINT test3_gender_check;
+```
+
+### <strong>DROP</strong> Constraint
+```sql
+ALTER TABLE Test3 DROP CONSTRAINT test3_gender_check;
+```
