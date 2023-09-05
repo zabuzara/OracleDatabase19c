@@ -122,6 +122,9 @@ SELECT table_name FROM all_tables ORDER BY table_name;
 
 -- for specific owner
 SELECT * FROM all_tables WHERE OWNER = 'OT' ORDER BY table_name;
+
+-- all table in oracle
+SELECT table_name FROM dba_tables;
 ```
 
 <hr>
