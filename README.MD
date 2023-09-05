@@ -116,6 +116,13 @@ ALTER TABLE Users RENAME COLUMN Surname TO Lastname;
 ```sql
 SELECT table_name FROM user_tables ORDER BY tabe_name;
 ```
+### <strong>Show all accessible tables for current user</strong>
+```sql
+SELECT table_name FROM all_tables ORDER BY table_name;
+
+-- for specific owner
+SELECT * FROM all_tables WHERE OWNER = 'OT' ORDER BY table_name;
+```
 
 <hr>
 
