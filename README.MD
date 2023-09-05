@@ -112,6 +112,11 @@ ALTER TABLE Users RENAME COLUMN Forename TO Firstname;
 ALTER TABLE Users RENAME COLUMN Surname TO Lastname;
 ```
 
+### <strong>Show User Tables</strong>
+```sql
+SELECT table_name FROM user_tables ORDER BY tabe_name;
+```
+
 <hr>
 
 ## <strong>Constraints</strong>
